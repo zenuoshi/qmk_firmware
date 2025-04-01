@@ -1,4 +1,4 @@
-SRC += 	mine.c \
+SRC += 	zenuoshi.c \
 		process_records.c
 
 AUDIO_ENABLE = no
