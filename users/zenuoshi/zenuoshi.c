@@ -1,4 +1,4 @@
-#include "mine.h"
+#include "zenuoshi.h"
 
 mycombo_t combos[][2] = {
     [SHIFT]   = {{MOD_BIT(KC_LSFT), KC_F13}, {MOD_BIT(KC_RSFT), KC_F14}},

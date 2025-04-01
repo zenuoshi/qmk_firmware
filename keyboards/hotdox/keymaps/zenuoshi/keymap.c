@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
 
-#include "mine.h"
+#include "zenuoshi.h"
 #include "layout_kc_ergodox76.h"
 
 enum LAYER {
