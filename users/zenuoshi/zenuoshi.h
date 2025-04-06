@@ -1,5 +1,8 @@
-#pragma once
+#ifndef USERSPACE
+#    define USERSPACE
+#endif
 
+#pragma once
 #include "quantum.h"
 #include "version.h"
 #include "process_records.h"
