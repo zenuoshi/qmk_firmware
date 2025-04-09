@@ -5,8 +5,8 @@ mycombo_t combos[][2] = {
     [CONTROL] = {{MOD_BIT(KC_LCTL), KC_F15}, {MOD_BIT(KC_RCTL), KC_F16}},
 };
 
-#define THIS(key_bit) (key_bit >> 1)
-#define OTHER(key_bit) (THIS(key_bit) ^ 0b01)
+#define CURRENT(key_bit) (key_bit >> 1)
+#define OPPOSITE(key_bit) (CURRENT(key_bit) ^ 0b01)
 
 #define LEFT_SIDE (1u << 0)
 #define RIGHT_SIDE (1u << 1)
@@ -45,45 +45,44 @@ inline void action_right_combo_key(bool pressed, uint8_t index) {
 }
 
 static void __press_combo_key(uint8_t index, uint8_t key_bit) {
-    mycombo_t* this_side = &(combos[index])[THIS(key_bit)];
+    mycombo_t* activated_key_state = &(combos[index])[CURRENT(key_bit)];
 #ifdef ENABLE_MY_COMBO
-    mycombo_t* other_side = &(combos[index])[OTHER(key_bit)];
+    mycombo_t* opposite_key_state = &(combos[index])[OPPOSITE(key_bit)];
 
-    this_side->pressed = true;
+    activated_key_state->pressed = true;
 
-    if (other_side->pressed) {
-        add_key(this_side->key);
+    if (opposite_key_state->pressed) {
+        add_key(activated_key_state->key);
     } else {
-        add_mods(this_side->mod);
+        add_mods(activated_key_state->mod);
     }
-
 #else
-    add_mods(this_side->mod);
+    add_mods(activated_key_state->mod);
 #endif
 
     send_keyboard_report();
 }
 
 static void __release_combo_key(uint8_t index, uint8_t key_bit) {
-    mycombo_t* this_side = &(combos[index])[THIS(key_bit)];
+    mycombo_t* activated_key_state = &(combos[index])[CURRENT(key_bit)];
 #ifdef ENABLE_MY_COMBO
-    mycombo_t* other_side = &(combos[index])[OTHER(key_bit)];
+    mycombo_t* opposite_key_state = &(combos[index])[OPPOSITE(key_bit)];
 
-    this_side->pressed = false;
+    activated_key_state->pressed = false;
 
-    if (is_mods_on(this_side->mod)) {
-        del_mods(this_side->mod);
+    if (is_mods_on(activated_key_state->mod)) {
+        del_mods(activated_key_state->mod);
     } else {
-        del_key(this_side->key);
+        del_key(activated_key_state->key);
     }
 
-    if (other_side->pressed && is_mods_off(other_side->mod)) {
-        del_key(other_side->key);
-        add_mods(other_side->mod);
+    if (opposite_key_state->pressed && is_mods_off(opposite_key_state->mod)) {
+        del_key(opposite_key_state->key);
+        add_mods(opposite_key_state->mod);
     }
 
 #else
-    del_mods(this_side->mod);
+    del_mods(activated_key_state->mod);
 #endif
 
     send_keyboard_report();
@@ -98,17 +97,17 @@ inline void lazy_action_right_combo_key(bool pressed, uint8_t index) {
 }
 
 static void __lazy_action_combo_key(bool pressed, uint8_t index, uint8_t key_bit) {
-    mycombo_t* this_side  = &(combos[index])[THIS(key_bit)];
-    mycombo_t* other_side = &(combos[index])[OTHER(key_bit)];
+    mycombo_t* activated_key_state = &(combos[index])[CURRENT(key_bit)];
+    mycombo_t* opposite_key_state  = &(combos[index])[OPPOSITE(key_bit)];
 
     if (pressed) {
-        this_side->pressed = true;
-        add_mods(this_side->mod);
+        activated_key_state->pressed = true;
+        add_mods(activated_key_state->mod);
     } else { // when released
-        this_side->pressed = false;
-        del_mods(this_side->mod);
-        if (other_side->pressed) {
-            register_code(this_side->key);
+        activated_key_state->pressed = false;
+        del_mods(activated_key_state->mod);
+        if (opposite_key_state->pressed) {
+            register_code(opposite_key_state->key);
         }
     }
 
