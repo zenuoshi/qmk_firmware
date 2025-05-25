@@ -1,0 +1,3 @@
+RGBLIGHT_ENABLE = no
+
+DEFAULT_FOLDER = xd60/rev2
