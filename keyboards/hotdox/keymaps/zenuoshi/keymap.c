@@ -118,7 +118,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // left hand -->
     XXXX,   F1,     F2,     F3,         F4,       F5,     F6,
     XXXX,   CTL(W), XXXX,   CTL(PGUP), CTL(PGDN), XXXX,   XXXX,
-    XXXX,   LGUI,   LALT,   LCTL,      LSFT,      XXXX,
+    XXXX,   LGUI,   LALT,   LSFT,      LCTL,      XXXX,
     XXXX,   XXXX,   XXXX,   LMEH,      LHYPR,     XXXX,   XXXX,
     XXXX,   XXXX,   XXXX,   XXXX,       ____,
 
@@ -153,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // <-- right hand
     ____,   XXXX,   XXXX,    XXXX,    XXXX,    XXXX,    XXXX,
     XXXX,   XXXX,   XXXX,    XXXX,    XXXX,    XXXX,    XXXX,
-            XXXX,   RSFT,    RCTL,    RALT,    RGUI,    XXXX,
+            XXXX,   RCTL,    RSFT,    RALT,    RGUI,    XXXX,
     XXXX,   XXXX,   RHYPR,   RMEH,    XXXX,    XXXX,    XXXX,
                     XXXX,    XXXX,    XXXX,    XXXX,    ____,
 
