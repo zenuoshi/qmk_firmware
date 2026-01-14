@@ -42,6 +42,15 @@
 #define CTL(kc) (QK_RCTL | (kc))
 #define KC_CTL(kc) CTL(KC_##kc)
 
+#define KC_MS_BTN1 MS_BTN1
+#define KC_MS_BTN2 MS_BTN2
+#define KC_MS_WHLU MS_WHLU
+#define KC_MS_WHLD MS_WHLD
+#define KC_MS_UP MS_UP
+#define KC_MS_DOWN MS_DOWN
+#define KC_MS_LEFT MS_LEFT
+#define KC_MS_RGHT MS_RGHT
+
 #define KC_MO(layer) MO(layer)
 #define KC_RESET QK_REBOOT
 #define KC_BOOT QK_BOOT

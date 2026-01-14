@@ -141,8 +141,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_RIGHT_FN] = LAYOUT_KC_ergodox76(
     // left hand -->
     XXXX,     F1,         F2,      F3,      F4,       F5,       XXXX,
-    XXXX,     MS_WH_UP,   MS_BTN2, MS_UP,   MS_BTN1,  XXXX,     XXXX,
-    XXXX,     MS_WH_DOWN, MS_LEFT, MS_DOWN, MS_RIGHT, XXXX,
+    XXXX,     MS_WHLU,    MS_BTN2, MS_UP,   MS_BTN1,  XXXX,     XXXX,
+    XXXX,     MS_WHLD,    MS_LEFT, MS_DOWN, MS_RGHT, XXXX,
     XXXX,     XXXX,       XXXX,    XXXX,    XXXX,     XXXX,     XXXX,
     ____,     XXXX,       XXXX,    XXXX,    ____,
 
